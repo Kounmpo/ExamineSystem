@@ -1,0 +1,49 @@
+#top{
+    display: flex;
+    margin-left: 50px;
+    margin-right: 50px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+.button{
+    height: 30px;
+    width: 80px;
+    background-color: white;
+    border-radius: 5px;
+}
+#line{
+    height: 10px;
+    color: darkgrey;
+}
+.input-group{
+    display: flex;
+    margin-top: 25px;
+}
+#middle{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 20px;
+    height: 150px;
+}
+#middle-input{
+
+}
+.textandbutton{
+    display: flex;
+}
+#button-group{
+    margin-top: 25px;
+}
+.form-control{
+    margin-left: 20px;
+    margin-right:50px;
+}
+.buttontext{
+    width: 120px;
+}
+#remake{
+    margin-right: 25px;
+}

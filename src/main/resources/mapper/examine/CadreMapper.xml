@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hui.mapper.examine.CadreMapper">
+    <!--  条件查询-->
+    <select id="selectSelective" parameterType="Cadre" resultType="Cadre">
+        select id,
+        name,
+        unit_id,
+        code,
+        phone,
+        email,
+        gender,
+        birthday,
+        position,
+        leader_id
+        from cadre
+        where 1 = 1
+        <if test="name != null &amp;&amp; name != ''">
+            and name like "%"#{name}"%"
+        </if>
+        <if test="code != null  &amp;&amp; code != ''">
+            and code=#{code}
+        </if>
+        <if test="phone != null &amp;&amp; phone != ''">
+            and phone like "%"#{phone}"%"
+        </if>
+        <if test="email != null &amp;&amp; email != ''">
+            and eamil=#{eamil}
+        </if>
+        <if test="gender != null">
+            and gender=#{gender}
+        </if>
+        <if test="birthday != null">
+            and birthday=#{birthday}
+        </if>
+        <if test="position != null &amp;&amp; position !=''">
+            and position like "%"#{position}"%"
+        </if>
+    </select>
+    <!--  通过主键查询-->
+    <select id="selectByPrimaryKey" resultType="Cadre">
+        select id,
+               name,
+               unit_id,
+               code,
+               phone,
+               email,
+               gender,
+               birthday,
+               position,
+               leader_id
+        from cadre
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <!--  首页查询，查询领导班子和干部个人考核的最终考核结果-->
+    <select id="CadreExamine" resultType="Cadre">
+
+    </select>
+    <select id="GroupExamine" resultType="Cadre"></select>
+    <!--  通过主键删除-->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from cadre
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="Cadre" useGeneratedKeys="true">
+        insert into cadre (name, unit_id, code,
+                           phone, email, gender,
+                           birthday, position, leader_id)
+        values (#{name,jdbcType=VARCHAR}, #{unitId,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR},
+                #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{gender,jdbcType=BOOLEAN},
+                #{birthday,jdbcType=DATE}, #{position,jdbcType=VARCHAR}, #{leaderId,jdbcType=BIGINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="Cadre" useGeneratedKeys="true">
+        insert into cadre
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null&amp;&amp;name != ''">
+                name,
+            </if>
+            <if test="unitId != null">
+                unit_id,
+            </if>
+            <if test="code != null &amp;&amp;code != ''">
+                code,
+            </if>
+            <if test="phone != null &amp;&amp;phone != ''">
+                phone,
+            </if>
+            <if test="email != null &amp;&amp;email != ''">
+                email,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="birthday != null">
+                birthday,
+            </if>
+            <if test="position != null &amp;&amp;position != ''">
+                position,
+            </if>
+            <if test="leaderId != null">
+                leader_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="unitId != null">
+                #{unitId,jdbcType=BIGINT},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=BOOLEAN},
+            </if>
+            <if test="birthday != null">
+                #{birthday,jdbcType=DATE},
+            </if>
+            <if test="position != null">
+                #{position,jdbcType=VARCHAR},
+            </if>
+            <if test="leaderId != null">
+                #{leaderId,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="Cadre">
+        update cadre
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="unitId != null">
+                unit_id = #{unitId,jdbcType=BIGINT},
+            </if>
+            <if test="code != null">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=BOOLEAN},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday,jdbcType=DATE},
+            </if>
+            <if test="position != null">
+                `position` = #{position,jdbcType=VARCHAR},
+            </if>
+            <if test="leaderId != null">
+                leader_id = #{leaderId,jdbcType=BIGINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="Cadre">
+        update cadre
+        set name      = #{name,jdbcType=VARCHAR},
+            unit_id   = #{unitId,jdbcType=BIGINT},
+            code      = #{code,jdbcType=VARCHAR},
+            phone     = #{phone,jdbcType=VARCHAR},
+            email     = #{email,jdbcType=VARCHAR},
+            gender    = #{gender,jdbcType=BOOLEAN},
+            birthday  = #{birthday,jdbcType=DATE},
+            position  = #{position,jdbcType=VARCHAR},
+            leader_id = #{leaderId,jdbcType=BIGINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

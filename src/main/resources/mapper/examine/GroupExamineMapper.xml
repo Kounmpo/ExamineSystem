@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hui.mapper.examine.GroupExamineMapper">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="com.hui.entity.examine.Unit">
+        select id, examine_name, unit_id, weight, points
+        from group_examine
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from group_examine
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="GroupExamine" useGeneratedKeys="true">
+        insert into group_examine (examine_name, unit_id, weight,
+                                   points)
+        values (#{examineName,jdbcType=VARCHAR}, #{unitId,jdbcType=BIGINT}, #{weight,jdbcType=DOUBLE},
+                #{points,jdbcType=DOUBLE})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="GroupExamine"
+            useGeneratedKeys="true">
+        insert into group_examine
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="examineName != null">
+                examine_name,
+            </if>
+            <if test="unitId != null">
+                unit_id,
+            </if>
+            <if test="weight != null">
+                weight,
+            </if>
+            <if test="points != null">
+                points,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="examineName != null">
+                #{examineName,jdbcType=VARCHAR},
+            </if>
+            <if test="unitId != null">
+                #{unitId,jdbcType=BIGINT},
+            </if>
+            <if test="weight != null">
+                #{weight,jdbcType=DOUBLE},
+            </if>
+            <if test="points != null">
+                #{points,jdbcType=DOUBLE},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="GroupExamine">
+        update group_examine
+        <set>
+            <if test="examineName != null">
+                examine_name = #{examineName,jdbcType=VARCHAR},
+            </if>
+            <if test="unitId != null">
+                unit_id = #{unitId,jdbcType=BIGINT},
+            </if>
+            <if test="weight != null">
+                weight = #{weight,jdbcType=DOUBLE},
+            </if>
+            <if test="points != null">
+                points = #{points,jdbcType=DOUBLE},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="GroupExamine">
+        update group_examine
+        set examine_name = #{examineName,jdbcType=VARCHAR},
+            unit_id      = #{unitId,jdbcType=BIGINT},
+            weight       = #{weight,jdbcType=DOUBLE},
+            points       = #{points,jdbcType=DOUBLE}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>
