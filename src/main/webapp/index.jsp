@@ -13,7 +13,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Welcome</title>
     <%
-        //        项目当前路径
+        //        项目当前路
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
     <script type="text/javascript" src="${APP_PATH}/static/js/jquery.min.js"></script>

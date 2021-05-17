@@ -17,7 +17,6 @@ public interface GroupExamineMapper {
 
     Unit selectByPrimaryKey(Long id);
 
-
     int updateByPrimaryKeySelective(Unit record);
 
     int updateByPrimaryKey(Unit record);
