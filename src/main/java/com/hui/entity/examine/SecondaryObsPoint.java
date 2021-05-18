@@ -19,7 +19,7 @@ public class SecondaryObsPoint implements Serializable {
     /**
      * 二级观测点编号
      */
-    private Long id;
+    private Long secondaryId;
 
     /**
      * 二级观测点名称
@@ -29,25 +29,11 @@ public class SecondaryObsPoint implements Serializable {
     /**
      * 所属的一级观测点编号
      */
-    private Integer firstObsPointId;
+    private Integer firstId;
 
-    /**
-     * 评分等级，0，1，2，3，4,分别表示优秀、良好、一般、较差、不了解
-     */
-    private Integer obsLevel;
+    private Double weight;
 
-    /**
-     * 所属干部的id
-     */
-    private Long cadreId;
+    private Long leadingId;
 
-    /**
-     * 0表示领导班子日常考核、1表示领导干部日常考核
-     */
-    private Boolean groupExamine;
-
-    /**
-     * 领导班子所属的部门id
-     */
-    private Long unitId;
+    private Integer groupExamine;
 }

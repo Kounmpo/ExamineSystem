@@ -3,6 +3,7 @@ package com.hui.mapper;
 
 import com.hui.entity.examine.Cadre;
 import com.hui.mapper.examine.CadreMapper;
+import com.hui.mapper.examine.UnitMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ import java.util.List;
 public class MapperTest {
     @Autowired
     CadreMapper cadreMapper;
+
+    @Autowired
+    UnitMapper unitMapper;
     @Test
     public void queryAllTest() {
         List<Cadre> cadres = cadreMapper.selectSelective(new Cadre());

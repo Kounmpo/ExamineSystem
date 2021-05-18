@@ -24,7 +24,7 @@ public class Cadre implements Serializable {
     /**
      * 干部标识
      */
-    private Long id;
+    private Long cadreId;
 
     /**
      * 干部名称
@@ -39,7 +39,7 @@ public class Cadre implements Serializable {
     /**
      * 干部编码
      */
-    private String code;
+    private String cadreCode;
 
     /**
      * 电话

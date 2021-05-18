@@ -1,66 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hui.mapper.examine.UnitMapper">
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="Unit">
-    select id, name, code, level
-    from unit
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from unit
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="Unit" useGeneratedKeys="true">
-    insert into unit (`name`, code, `level`
-      )
-    values (#{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{level,jdbcType=SMALLINT}
-      )
-  </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="Unit" useGeneratedKeys="true">
-    insert into unit
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        `name`,
-      </if>
-      <if test="code != null">
-        code,
-      </if>
-      <if test="level != null">
-        `level`,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="code != null">
-        #{code,jdbcType=VARCHAR},
-      </if>
-      <if test="level != null">
-        #{level,jdbcType=SMALLINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="Unit">
-    update unit
-    <set>
-      <if test="name != null">
-        `name` = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="code != null">
-        code = #{code,jdbcType=VARCHAR},
-      </if>
-      <if test="level != null">
-        `level` = #{level,jdbcType=SMALLINT},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="Unit">
-    update unit
-    set `name` = #{name,jdbcType=VARCHAR},
-      code = #{code,jdbcType=VARCHAR},
-      `level` = #{level,jdbcType=SMALLINT}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="Unit">
+        select unit_id,
+               name,
+               unit_code,
+               level
+        from unit
+        where unit_id = #{unitId,jdbcType=BIGINT}
+    </select>
+    <select id="selectAll" resultType="Unit">
+        select unit_id,
+               unit_code,
+               level
+        from unit
+    </select>
+    <select id="selectAllDailyGroup" resultType="Unit">
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from unit
+        where unit_id = #{unitId,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="Unit" useGeneratedKeys="true">
+        insert into unit (name, unit_code, level)
+        values (#{name,jdbcType=VARCHAR}, #{unitCode,jdbcType=VARCHAR}, #{level,jdbcType=SMALLINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="Unit" useGeneratedKeys="true">
+        insert into unit
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                name,
+            </if>
+            <if test="unitCode != null">
+                unit_code,
+            </if>
+            <if test="level != null">
+                level,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="unitCode != null">
+                #{unitCode,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=SMALLINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="Unit">
+        update unit
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="unitCode != null">
+                unit_code = #{unitCode,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                level = #{level,jdbcType=SMALLINT},
+            </if>
+        </set>
+        where unit_id = #{unitId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="Unit">
+        update unit
+        set name      = #{name,jdbcType=VARCHAR},
+            unit_code = #{unitCode,jdbcType=VARCHAR},
+            level     = #{level,jdbcType=SMALLINT}
+        where unit_id = #{unitId,jdbcType=BIGINT}
+    </update>
 </mapper>

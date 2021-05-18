@@ -1,6 +1,7 @@
 package com.hui.mapper.examine;
 
 import com.hui.entity.examine.Unit;
+import java.util.List;
 
 /**
  * Unit实体类对应的mapper文件
@@ -16,6 +17,18 @@ public interface UnitMapper {
     int insertSelective(Unit record);
 
     Unit selectByPrimaryKey(Long id);
+
+    /**
+     * 首页的领导班子查询，包括条件查询，详情查询
+     * @return List<Unit>
+     */
+    List<Unit> selectAll();
+
+    /**
+     * 首页的领导日常考核查询
+     * @return List<Unit>
+     */
+    List<Unit> selectAllDailyGroup();
 
     int updateByPrimaryKeySelective(Unit record);
 

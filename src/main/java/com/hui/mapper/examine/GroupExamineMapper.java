@@ -1,6 +1,9 @@
 package com.hui.mapper.examine;
 
+import com.hui.entity.examine.GroupExamine;
 import com.hui.entity.examine.Unit;
+import org.apache.ibatis.annotations.Param;
+import java.util.List;
 
 /**
  * GroupExamine实体类对应的mapper文件
@@ -9,13 +12,25 @@ import com.hui.entity.examine.Unit;
  * @version 1.0
  */
 public interface GroupExamineMapper {
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(@Param("groupId") Long groupId);
 
     int insert(Unit record);
 
     int insertSelective(Unit record);
 
-    Unit selectByPrimaryKey(Long id);
+    /**
+     * 通过主键查询一条记录
+     * @param groupId the groupId
+     * @return unit
+     */
+    GroupExamine selectByPrimaryKey(@Param("groupId") Long groupId);
+
+    /**
+     * 通过unit_id查询考核结果
+     * @param unitId the unitId
+     * @return List<GroupExamine>
+     */
+    List<GroupExamine> selectByUnitId(@Param("unitId") Long unitId);
 
     int updateByPrimaryKeySelective(Unit record);
 

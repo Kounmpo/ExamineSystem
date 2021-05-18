@@ -18,15 +18,13 @@ public class FirstObsPoint implements Serializable {
     /**
      * 一级观测点编号
      */
-    private Long id;
+    private Long firstId;
 
     /**
      * 一级观测点名称
      */
     private String name;
 
-    /**
-     * 牵头部门
-     */
-    private Long unitId;
+
+    private double weight;
 }

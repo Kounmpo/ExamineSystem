@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 /**
  * 领导班子年度考核总结果对应的实体类
@@ -20,7 +19,7 @@ public class GroupExamine implements Serializable {
     /**
      * 处级领导班子年度考核结果id
      */
-    private Long id;
+    private Long groupId;
 
     /**
      * 考核项目
@@ -35,7 +34,7 @@ public class GroupExamine implements Serializable {
     /**
      * 考核项目所占的权重
      */
-    private BigDecimal weight;
+    private Double weight;
 
     /**
      * 各项考核项目的分数

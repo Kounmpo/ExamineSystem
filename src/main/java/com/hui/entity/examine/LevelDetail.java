@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 /**
  * 处级干部领导个人年度考核详情对应的实体类，包括学院层面、机关层面、直属单位层面
@@ -20,7 +19,7 @@ public class LevelDetail implements Serializable {
     /**
      *学院层面干部个人年度测评结果id
      */
-    private Long id;
+    private Long levelId;
 
     /**
      * 干部id
@@ -35,30 +34,30 @@ public class LevelDetail implements Serializable {
     /**
      * 校领导测评
      */
-    private BigDecimal schoolLeader;
+    private Double schoolLeader;
 
     /**
      * 本单位测评
      */
-    private BigDecimal thisUnit;
+    private Double thisUnit;
 
     /**
      * 服务对象测评
      */
-    private BigDecimal serviceObject;
+    private Double serviceObject;
 
     /**
      * 领导班子考核结果
      */
-    private BigDecimal unitExamine;
+    private Double unitExamine;
 
     /**
      * 个人日常考核结果
      */
-    private BigDecimal cadreExamine;
+    private Double cadreExamine;
 
     /**
      * 学习成果
      */
-    private BigDecimal studyAchievement;
+    private Double studyAchievement;
 }

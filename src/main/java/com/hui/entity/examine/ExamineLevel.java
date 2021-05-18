@@ -18,7 +18,7 @@ public class ExamineLevel implements Serializable {
     /**
      * 领导干部个人考核结果id
      */
-    private Long id;
+    private Long examineId;
 
     /**
      * 个人考核明细表id

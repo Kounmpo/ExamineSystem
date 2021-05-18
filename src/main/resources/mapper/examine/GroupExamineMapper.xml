@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hui.mapper.examine.GroupExamineMapper">
-    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="com.hui.entity.examine.Unit">
-        select id, examine_name, unit_id, weight, points
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="GroupExamine">
+        select group_id, examine_name, unit_id, weight, points
         from group_examine
-        where id = #{id,jdbcType=BIGINT}
+        where group_id = #{groupId,jdbcType=BIGINT}
+    </select>
+    <select id="selectByUnitId" resultType="GroupExamine">
+        select examine_name,
+               weight,
+               points
+        from group_examine
+        where unit_id = #{unitId, jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete
         from group_examine
-        where id = #{id,jdbcType=BIGINT}
+        where group_id = #{groupId,jdbcType=BIGINT}
     </delete>
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="GroupExamine" useGeneratedKeys="true">
         insert into group_examine (examine_name, unit_id, weight,
@@ -73,6 +80,6 @@
             unit_id      = #{unitId,jdbcType=BIGINT},
             weight       = #{weight,jdbcType=DOUBLE},
             points       = #{points,jdbcType=DOUBLE}
-        where id = #{id,jdbcType=BIGINT}
+        where group_id = #{groupId,jdbcType=BIGINT}
     </update>
 </mapper>

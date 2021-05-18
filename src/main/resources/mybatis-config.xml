@@ -15,6 +15,9 @@
         <typeAlias type="com.hui.entity.examine.GroupExamine" alias="GroupExamine"/>
         <typeAlias type="com.hui.entity.examine.Cadre" alias="Cadre"/>
         <typeAlias type="com.hui.entity.examine.Unit" alias="Unit"/>
+        <typeAlias type="com.hui.entity.examine.DailyExamine" alias="DailyExamine"/>
+        <typeAlias type="com.hui.entity.examine.FirstObsPoint" alias="FirstObsPoint"/>
+        <typeAlias type="com.hui.entity.examine.SecondaryObsPoint" alias="SecondaryObsPoint"/>
     </typeAliases>
 
     <plugins>
