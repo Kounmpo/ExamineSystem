@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hui.mapper.examine.SecondaryObsPointMapper">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="SecondaryObsPoint">
+        select secondary_id,
+               name,
+               first_id,
+               group_examine,
+               weight,
+               leading_id
+        from secondary_obs_point
+        where secondary_id = #{secondaryId,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from secondary_obs_point
+        where secondary_id = #{secondaryId,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="secondary_id" keyProperty="secondaryId" parameterType="SecondaryObsPoint"
+            useGeneratedKeys="true">
+        insert into secondary_obs_point (name, first_id, group_examine,
+                                         weight, leading_id)
+        values (#{name,jdbcType=VARCHAR}, #{firstId,jdbcType=BIGINT}, #{groupExamine,jdbcType=BOOLEAN},
+                #{weight,jdbcType=DOUBLE}, #{leadingId,jdbcType=BIGINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="secondary_id" keyProperty="secondaryId" parameterType="SecondaryObsPoint"
+            useGeneratedKeys="true">
+        insert into secondary_obs_point
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                name,
+            </if>
+            <if test="firstId != null">
+                first_id,
+            </if>
+            <if test="groupExamine != null">
+                group_examine,
+            </if>
+            <if test="weight != null">
+                weight,
+            </if>
+            <if test="leadingId != null">
+                leading_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="firstId != null">
+                #{firstId,jdbcType=BIGINT},
+            </if>
+            <if test="groupExamine != null">
+                #{groupExamine,jdbcType=BOOLEAN},
+            </if>
+            <if test="weight != null">
+                #{weight,jdbcType=DOUBLE},
+            </if>
+            <if test="leadingId != null">
+                #{leadingId,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="SecondaryObsPoint">
+        update secondary_obs_point
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="firstId != null">
+                first_id = #{firstId,jdbcType=BIGINT},
+            </if>
+            <if test="groupExamine != null">
+                group_examine = #{groupExamine,jdbcType=BOOLEAN},
+            </if>
+            <if test="weight != null">
+                weight = #{weight,jdbcType=DOUBLE},
+            </if>
+            <if test="leadingId != null">
+                leading_id = #{leadingId,jdbcType=BIGINT},
+            </if>
+        </set>
+        where secondary_id = #{secondaryId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="SecondaryObsPoint">
+        update secondary_obs_point
+        set name        = #{name,jdbcType=VARCHAR},
+            first_id      = #{firstId,jdbcType=BIGINT},
+            group_examine = #{groupExamine,jdbcType=BOOLEAN},
+            weight        = #{weight,jdbcType=DOUBLE},
+            leading_id    = #{leadingId,jdbcType=BIGINT}
+        where secondary_id = #{secondaryId,jdbcType=BIGINT}
+    </update>
+</mapper>

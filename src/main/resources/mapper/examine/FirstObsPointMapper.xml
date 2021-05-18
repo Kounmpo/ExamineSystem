@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hui.mapper.examine.FirstObsPointMapper">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="FirstObsPoint">
+        select first_id,
+               name,
+               weight
+        from first_obs_point
+        where first_id = #{firstId,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from first_obs_point
+        where first_id = #{firstId,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="first_id" keyProperty="firstId" parameterType="FirstObsPoint"
+            useGeneratedKeys="true">
+        insert into first_obs_point (name, weight)
+        values (#{name,jdbcType=VARCHAR}, #{weight,jdbcType=DOUBLE})
+    </insert>
+    <insert id="insertSelective" keyColumn="first_id" keyProperty="firstId" parameterType="FirstObsPoint"
+            useGeneratedKeys="true">
+        insert into first_obs_point
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                name,
+            </if>
+            <if test="weight != null">
+                weight,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="weight != null">
+                #{weight,jdbcType=DOUBLE},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="FirstObsPoint">
+        update first_obs_point
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="weight != null">
+                weight = #{weight,jdbcType=DOUBLE},
+            </if>
+        </set>
+        where first_id = #{firstId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="FirstObsPoint">
+        update first_obs_point
+        set name = #{name,jdbcType=VARCHAR},
+            weight = #{weight,jdbcType=DOUBLE}
+        where first_id = #{firstId,jdbcType=BIGINT}
+    </update>
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hui.mapper.examine.DailyExamineMapper">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="DailyExamine">
+        select daily_id,
+               secondary_id,
+               cadre_id,
+               unit_id,
+               group_examine,
+               obs_level
+        from daily_examine
+        where daily_id = #{dailyId,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from daily_examine
+        where daily_id = #{dailyId,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="daily_id" keyProperty="dailyId" parameterType="DailyExamine" useGeneratedKeys="true">
+        insert into daily_examine (secondary_id, cadre_id, unit_id,
+                                   group_examine, obs_level)
+        values (#{secondaryId,jdbcType=BIGINT}, #{cadreId,jdbcType=BIGINT}, #{unitId,jdbcType=BIGINT},
+                #{groupExamine,jdbcType=BOOLEAN}, #{obsLevel,jdbcType=DOUBLE})
+    </insert>
+    <insert id="insertSelective" keyColumn="daily_id" keyProperty="dailyId" parameterType="DailyExamine"
+            useGeneratedKeys="true">
+        insert into daily_examine
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="secondaryId != null">
+                secondary_id,
+            </if>
+            <if test="cadreId != null">
+                cadre_id,
+            </if>
+            <if test="unitId != null">
+                unit_id,
+            </if>
+            <if test="groupExamine != null">
+                group_examine,
+            </if>
+            <if test="obsLevel != null">
+                obs_level,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="secondaryId != null">
+                #{secondaryId,jdbcType=BIGINT},
+            </if>
+            <if test="cadreId != null">
+                #{cadreId,jdbcType=BIGINT},
+            </if>
+            <if test="unitId != null">
+                #{unitId,jdbcType=BIGINT},
+            </if>
+            <if test="groupExamine != null">
+                #{groupExamine,jdbcType=BOOLEAN},
+            </if>
+            <if test="obsLevel != null">
+                #{obsLevel,jdbcType=DOUBLE},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="DailyExamine">
+        update daily_examine
+        <set>
+            <if test="secondaryId != null">
+                secondary_id = #{secondaryId,jdbcType=BIGINT},
+            </if>
+            <if test="cadreId != null">
+                cadre_id = #{cadreId,jdbcType=BIGINT},
+            </if>
+            <if test="unitId != null">
+                unit_id = #{unitId,jdbcType=BIGINT},
+            </if>
+            <if test="groupExamine != null">
+                group_examine = #{groupExamine,jdbcType=BOOLEAN},
+            </if>
+            <if test="obsLevel != null">
+                obs_level = #{obsLevel,jdbcType=DOUBLE},
+            </if>
+        </set>
+        where daily_id = #{dailyId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="DailyExamine">
+        update daily_examine
+        set secondary_id  = #{secondaryId,jdbcType=BIGINT},
+            cadre_id      = #{cadreId,jdbcType=BIGINT},
+            unit_id       = #{unitId,jdbcType=BIGINT},
+            group_examine = #{groupExamine,jdbcType=BOOLEAN},
+            obs_level     = #{obsLevel,jdbcType=DOUBLE}
+        where daily_id = #{dailyId,jdbcType=BIGINT}
+    </update>
+</mapper>
