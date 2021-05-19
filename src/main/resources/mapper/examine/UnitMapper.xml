@@ -15,9 +15,6 @@
                level
         from unit
     </select>
-    <select id="selectAllDailyGroup" resultType="Unit">
-
-    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete
         from unit

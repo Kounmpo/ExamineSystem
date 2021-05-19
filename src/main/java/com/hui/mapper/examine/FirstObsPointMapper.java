@@ -1,6 +1,7 @@
 package com.hui.mapper.examine;
 
 import com.hui.entity.examine.FirstObsPoint;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * FirstObsPoint实体类对应的mapper文件

@@ -3,6 +3,7 @@ package com.hui.entity.examine;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import javax.persistence.Transient;
 import java.io.Serializable;
 
 /**
@@ -29,11 +30,24 @@ public class SecondaryObsPoint implements Serializable {
     /**
      * 所属的一级观测点编号
      */
-    private Integer firstId;
+    private Long firstId;
 
     private Double weight;
 
     private Long leadingId;
 
     private Integer groupExamine;
+
+    /**
+     * 考核的原始分数
+     */
+    @Transient
+    private Double points1;
+
+    /**
+     * 原始分数 * 权重 之后的分数
+     */
+    @Transient
+    private Double points2;
+
 }

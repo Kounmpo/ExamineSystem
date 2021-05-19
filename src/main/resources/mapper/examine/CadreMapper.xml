@@ -18,8 +18,8 @@
         <if test="name != null &amp;&amp; name != ''">
             and name like "%"#{name}"%"
         </if>
-        <if test="code != null  &amp;&amp; code != ''">
-            and code=#{code}
+        <if test="cadreCode != null  &amp;&amp; cadreCode != ''">
+            and cadre_code=#{cadreCode}
         </if>
         <if test="phone != null &amp;&amp; phone != ''">
             and phone like "%"#{phone}"%"
@@ -53,10 +53,10 @@
         where cadre_id = #{cadreId,jdbcType=BIGINT}
     </select>
     <!--  首页查询，查询领导班子和干部个人考核的最终考核结果-->
-    <select id="CadreExamine" resultType="Cadre">
+<!--    <select id="CadreExamine" resultType="Cadre">-->
 
-    </select>
-    <select id="GroupExamine" resultType="Cadre"></select>
+<!--    </select>-->
+<!--    <select id="GroupExamine" resultType="Cadre"></select>-->
     <!--  通过主键删除-->
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete

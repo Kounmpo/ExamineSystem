@@ -11,6 +11,16 @@
         from daily_examine
         where daily_id = #{dailyId,jdbcType=BIGINT}
     </select>
+    <select id="selectByUnitId" resultType="DailyExamine" parameterType="java.lang.Long">
+        select daily_id,
+               secondary_id,
+               cadre_id,
+               unit_id,
+               group_examine,
+               obs_level
+        from daily_examine
+        where unit_id = #{unitId, jdbcType=BIGINT}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete
         from daily_examine

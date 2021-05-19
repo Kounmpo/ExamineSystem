@@ -1,8 +1,6 @@
 package com.hui.mapper.examine;
 
 import com.hui.entity.examine.Cadre;
-import com.hui.entity.examine.GroupExamine;
-import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
@@ -20,9 +18,9 @@ public interface CadreMapper {
 
     List<Cadre> selectSelective(Cadre record);
 
-    List<Cadre> CadreExamine(Cadre record);
+    //List<Cadre> CadreExamine(Cadre record);
 
-    List<Cadre> GroupExamine(GroupExamine record);
+//    List<Cadre> GroupExamine(GroupExamine record);
 
     Cadre selectByPrimaryKey(Long id);
 

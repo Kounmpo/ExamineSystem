@@ -1,6 +1,8 @@
 package com.hui.mapper.examine;
 
 import com.hui.entity.examine.SecondaryObsPoint;
+import org.apache.ibatis.annotations.Param;
+import java.util.List;
 
 /**
  * SecondaryObsPoint实体类对应的mapper文件
@@ -16,6 +18,8 @@ public interface SecondaryObsPointMapper {
     int insertSelective(SecondaryObsPoint record);
 
     SecondaryObsPoint selectByPrimaryKey(Long secondaryId);
+
+    List<SecondaryObsPoint> selectByFirstId(@Param("firstId") Long firstId);
 
     int updateByPrimaryKeySelective(SecondaryObsPoint record);
 

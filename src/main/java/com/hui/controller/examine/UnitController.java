@@ -17,7 +17,7 @@ import java.util.List;
  * @date 2021/5/18 0:03
  */
 @Controller
-@RequestMapping(value = "units")
+@RequestMapping(value = "/units")
 public class UnitController {
     UnitService unitService;
 
@@ -30,7 +30,7 @@ public class UnitController {
      * @param pageNumber the pageNumber
      * @return Message
      */
-    @GetMapping(value = "unit-examine")
+    @GetMapping(value = "/unit-examine")
     @ResponseBody
     public Message selectAllUnitExamine(@RequestParam(value = "pageNumber", defaultValue = "1") Integer pageNumber) {
         PageHelper.startPage(pageNumber,5);

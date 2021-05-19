@@ -24,12 +24,6 @@ public interface UnitMapper {
      */
     List<Unit> selectAll();
 
-    /**
-     * 首页的领导日常考核查询
-     * @return List<Unit>
-     */
-    List<Unit> selectAllDailyGroup();
-
     int updateByPrimaryKeySelective(Unit record);
 
     int updateByPrimaryKey(Unit record);

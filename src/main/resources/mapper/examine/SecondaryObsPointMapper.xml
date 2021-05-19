@@ -11,6 +11,11 @@
         from secondary_obs_point
         where secondary_id = #{secondaryId,jdbcType=BIGINT}
     </select>
+    <select id="selectByFirstId" resultType="SecondaryObsPoint">
+        select *
+        from secondary_obs_point
+        where first_id = #{firstId, jdbcType=BIGINT}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete
         from secondary_obs_point
@@ -84,7 +89,7 @@
     </update>
     <update id="updateByPrimaryKey" parameterType="SecondaryObsPoint">
         update secondary_obs_point
-        set name        = #{name,jdbcType=VARCHAR},
+        set name          = #{name,jdbcType=VARCHAR},
             first_id      = #{firstId,jdbcType=BIGINT},
             group_examine = #{groupExamine,jdbcType=BOOLEAN},
             weight        = #{weight,jdbcType=DOUBLE},
