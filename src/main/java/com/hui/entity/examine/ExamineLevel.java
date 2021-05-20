@@ -23,7 +23,7 @@ public class ExamineLevel implements Serializable {
     /**
      * 个人考核明细表id
      */
-    private Long detailId;
+    private Long levelId;
 
     /**
      * 考核单位名称

@@ -9,8 +9,8 @@ import java.util.Set;
 public interface FirstObsPointService {
     /**
      * 日常考核查询一级观测点
-     * @param sid 二级观测点的id
+     * @param unitId 部门id
      * @return Set<FirstObsPoint>
      */
-    Set<FirstObsPoint> selectAll(Long sid);
+    Set<FirstObsPoint> selectAll(Long unitId);
 }
