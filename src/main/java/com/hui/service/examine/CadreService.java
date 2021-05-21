@@ -13,4 +13,11 @@ public interface CadreService {
      * @return List<Cadre>
      */
     List<Cadre> selectSelective(Cadre cadre);
+
+    /**
+     * 干部的日常考核分数
+     * @param cadre the cadre
+     * @return List<Cadre>
+     */
+    List<Cadre> selectForIndex(Cadre cadre);
 }

@@ -27,4 +27,17 @@ public class FirstObsPointController {
     public Message getAllFirstPoint(@RequestParam("unitId") Long unitId) {
         return Message.success().add("all",service.selectAll(unitId));
     }
+
+    @RequestMapping(value = "/daily-points")
+    @ResponseBody
+    public Message getPoints(@RequestParam("unitId") Long unitId) {
+        return Message.success().add("points",
+                service.getUnitDailyPoints(unitId));
+    }
+
+    @RequestMapping("/first-cadre")
+    @ResponseBody
+    public Message getAllCadreFirstPoint(@RequestParam("cadreId") Long cadreId) {
+        return Message.success().add("all",service.selectAllCadre(cadreId));
+    }
 }

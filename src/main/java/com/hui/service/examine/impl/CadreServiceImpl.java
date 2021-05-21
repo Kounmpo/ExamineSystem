@@ -3,6 +3,7 @@ package com.hui.service.examine.impl;
 import com.hui.entity.examine.Cadre;
 import com.hui.mapper.examine.CadreMapper;
 import com.hui.service.examine.CadreService;
+import com.hui.service.examine.LevelDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -13,6 +14,10 @@ import java.util.List;
  */
 @Service
 public class CadreServiceImpl implements CadreService {
+
+    @Autowired
+    LevelDetailService service;
+
     private final CadreMapper cadreMapper;
 
     @Autowired
@@ -23,5 +28,15 @@ public class CadreServiceImpl implements CadreService {
     @Override
     public List<Cadre> selectSelective(Cadre cadre) {
         return cadreMapper.selectSelective(new Cadre());
+    }
+
+    @Override
+    public List<Cadre> selectForIndex(Cadre cadre) {
+        List<Cadre> cadreList = cadreMapper.selectForIndex(cadre);
+        for (Cadre c:
+             cadreList) {
+            c.setPoints(service.getLevelPoints(cadre.getCadreId()));
+        }
+        return cadreList;
     }
 }

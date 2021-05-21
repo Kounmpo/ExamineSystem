@@ -11,6 +11,7 @@
     </select>
     <select id="selectAll" resultType="Unit">
         select unit_id,
+               name,
                unit_code,
                level
         from unit

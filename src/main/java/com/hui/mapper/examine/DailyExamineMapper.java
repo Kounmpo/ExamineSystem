@@ -24,6 +24,13 @@ public interface DailyExamineMapper {
      */
     List<DailyExamine> selectByUnitId(@Param("unitId") Long unitId);
 
+    /**
+     * 查询干部日常考核详情
+     * @param cadreId the cadreId
+     * @return List<DailyExamine>
+     */
+    List<DailyExamine> selectByCadreId(@Param("cadreId") Long cadreId);
+
     int updateByPrimaryKeySelective(DailyExamine record);
 
     int updateByPrimaryKey(DailyExamine record);

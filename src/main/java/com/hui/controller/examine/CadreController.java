@@ -31,10 +31,20 @@ public class CadreController {
     @GetMapping(value = "/cadres")
     @ResponseBody
     public Message getAllCadre(@RequestParam(value = "pageNumber", defaultValue = "1") Integer pageNumber) {
-        PageHelper.startPage(pageNumber,5);
-        List<Cadre> allSsmItem = cadreService.selectSelective(new Cadre());
+        PageHelper.startPage(pageNumber,10);
+        List<Cadre> cadres = cadreService.selectSelective(new Cadre());
         //将得到的结果返回到PageInfo中
-        PageInfo<Cadre> pageInfo = new PageInfo<>(allSsmItem, 3);
+        PageInfo<Cadre> pageInfo = new PageInfo<>(cadres, 3);
         return Message.success().add("pageInfo",pageInfo);
+    }
+
+    @GetMapping(value = "/cadres-index")
+    @ResponseBody
+    public Message getAllCadreForIndex(@RequestParam(value = "pageNumber", defaultValue = "1") Integer pageNumber,
+                                       Cadre cadre) {
+        PageHelper.startPage(pageNumber,10);
+        PageInfo<Cadre> pageInfo = new PageInfo<>(cadreService.selectForIndex(cadre),
+                3);
+        return Message.success().add("pageInfo", pageInfo);
     }
 }

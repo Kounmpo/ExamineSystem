@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @date 2021/5/18 0:32
  */
 @Controller
-@RequestMapping(value = "group-examine")
 public class GroupExamineController {
     GroupExamineService groupExamineService;
 
@@ -30,5 +29,12 @@ public class GroupExamineController {
     @ResponseBody
     public Message examineDetail(@RequestParam("unitId") Long unitId) {
         return Message.success().add("detail", groupExamineService.selectByUnitId(unitId));
+    }
+
+
+    @GetMapping(value = "pointsSum")
+    @ResponseBody
+    public Message pointsSum(@RequestParam("unitId") Long unitId) {
+        return Message.success().add("pointsSum", groupExamineService.selectPointsByUnitId(unitId));
     }
 }

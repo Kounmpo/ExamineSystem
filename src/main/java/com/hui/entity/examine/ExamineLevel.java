@@ -15,15 +15,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ExamineLevel implements Serializable {
+
     /**
      * 领导干部个人考核结果id
      */
     private Long examineId;
-
-    /**
-     * 个人考核明细表id
-     */
-    private Long levelId;
 
     /**
      * 考核单位名称

@@ -24,4 +24,10 @@ public class DailyExamineServiceImpl implements DailyExamineService {
     public List<DailyExamine> selectByUnitId(Long unitId) {
         return dailyExamineMapper.selectByUnitId(unitId);
     }
+
+    @Override
+    public List<DailyExamine> selectByCadreId(Long cadreId) {
+        return dailyExamineMapper.selectByCadreId(cadreId);
+    }
+
 }

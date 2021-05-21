@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -73,4 +74,12 @@ public class Cadre implements Serializable {
      */
     private Long leaderId;
 
+    @Transient
+    private String unitName;
+
+    @Transient
+    private Double points;
+
+    @Transient
+    private String level;
 }

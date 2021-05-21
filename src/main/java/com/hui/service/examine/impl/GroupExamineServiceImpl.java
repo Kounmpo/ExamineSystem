@@ -28,20 +28,24 @@ public class GroupExamineServiceImpl implements GroupExamineService {
 
     @Override
     public List<GroupExamine> selectByUnitId(Long unitId) {
-        Set<FirstObsPoint> firstObsPointSet =  service.selectAll(unitId);
-        Double points = 0.00D;
-        for (FirstObsPoint f:
-             firstObsPointSet) {
-            points += f.getPoints() * f.getWeight();
-        }
         List<GroupExamine> groupExamines = examineMapper.selectByUnitId(unitId);
         for (GroupExamine g:
              groupExamines) {
             if ("日常考核".equals(g.getExamineName())) {
-                g.setPoints(points);
+                g.setPoints(service.getUnitDailyPoints(unitId));
             }
         }
-        UnitServiceImpl.createGroupExamine(unitId, groupExamines);
         return groupExamines;
+    }
+
+    @Override
+    public Double selectPointsByUnitId(Long unitId) {
+        List<GroupExamine> list = selectByUnitId(unitId);
+        double pointsSum = 0.0d;
+        for (GroupExamine g:
+             list) {
+            pointsSum += g.getPoints() * g.getWeight();
+        }
+        return pointsSum;
     }
 }

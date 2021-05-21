@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.validation.annotation.Validated;
+import javax.persistence.Transient;
 import java.io.Serializable;
 
 /**
@@ -50,15 +51,25 @@ public class LevelDetail implements Serializable {
     /**
      * 领导班子考核结果
      */
+    @Transient
     private Double unitExamine;
+
+    private Long examineId;
 
     /**
      * 个人日常考核结果
      */
+    @Transient
     private Double cadreExamine;
 
     /**
      * 学习成果
      */
     private Double studyAchievement;
+
+    @Transient
+    private String levelName;
+
+    @Transient
+    private double pointsSum;
 }

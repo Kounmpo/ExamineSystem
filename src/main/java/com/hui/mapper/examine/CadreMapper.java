@@ -16,8 +16,19 @@ public interface CadreMapper {
 
     int insertSelective(Cadre record);
 
+    /**
+     * 领导干部的条件查询
+     * @param record the Cadre
+     * @return List<Cadre>
+     */
     List<Cadre> selectSelective(Cadre record);
 
+    /**
+     * 首页领导干部的条件查询
+     * @param cadre
+     * @return List<Cadre>
+     */
+    List<Cadre> selectForIndex(Cadre cadre);
     //List<Cadre> CadreExamine(Cadre record);
 
 //    List<Cadre> GroupExamine(GroupExamine record);

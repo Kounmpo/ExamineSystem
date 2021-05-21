@@ -17,6 +17,8 @@
         <typeAlias type="com.hui.entity.examine.DailyExamine" alias="DailyExamine"/>
         <typeAlias type="com.hui.entity.examine.FirstObsPoint" alias="FirstObsPoint"/>
         <typeAlias type="com.hui.entity.examine.SecondaryObsPoint" alias="SecondaryObsPoint"/>
+        <typeAlias type="com.hui.entity.examine.LevelDetail" alias="LevelDetail"/>
+        <typeAlias type="com.hui.entity.examine.ExamineLevel" alias="ExamineLevel"/>
     </typeAliases>
 
     <plugins>

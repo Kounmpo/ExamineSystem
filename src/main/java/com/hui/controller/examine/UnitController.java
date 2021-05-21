@@ -17,7 +17,6 @@ import java.util.List;
  * @date 2021/5/18 0:03
  */
 @Controller
-@RequestMapping(value = "/units")
 public class UnitController {
     UnitService unitService;
 

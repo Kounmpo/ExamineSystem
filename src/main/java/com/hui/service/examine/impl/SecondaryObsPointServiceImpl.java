@@ -26,8 +26,19 @@ public class SecondaryObsPointServiceImpl implements SecondaryObsPointService {
     public List<SecondaryObsPoint> selectAll(Long unitId) {
         List<SecondaryObsPoint> obsPoints = new ArrayList<>();
         List<DailyExamine> dailyExamines = examineService.selectByUnitId(unitId);
+        return getObsPointList(obsPoints, dailyExamines);
+    }
+
+    @Override
+    public List<SecondaryObsPoint> selectAllCadre(Long cadreId) {
+        List<SecondaryObsPoint> obsPoints = new ArrayList<>();
+        List<DailyExamine> dailyExamines = examineService.selectByCadreId(cadreId);
+        return getObsPointList(obsPoints, dailyExamines);
+    }
+
+    public List<SecondaryObsPoint> getObsPointList(List<SecondaryObsPoint> obsPoints, List<DailyExamine> dailyExamines) {
         for (DailyExamine d:
-             dailyExamines) {
+                dailyExamines) {
             SecondaryObsPoint obsPoint = mapper.selectByPrimaryKey(d.getSecondaryId());
             obsPoint.setPoints1(d.getObsLevel());
             obsPoint.setPoints2(d.getObsLevel() * obsPoint.getWeight());

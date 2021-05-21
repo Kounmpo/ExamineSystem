@@ -14,4 +14,11 @@ public interface GroupExamineService {
      * @return List<GroupExamine>
      */
     List<GroupExamine> selectByUnitId(Long unitId);
+
+    /**
+     * 领导班子年度考核的总分
+     * @param unitId theUnitId
+     * @return Double
+     */
+    Double selectPointsByUnitId(Long unitId);
 }
