@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hui.mapper.examine.ExamineLevelMapper">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="ExamineLevel">
+    select 
+    examine_id, level_name
+    from examine_level
+    where examine_id = #{examineId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from examine_level
+    where examine_id = #{examineId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="examine_id" keyProperty="examineId" parameterType="ExamineLevel" useGeneratedKeys="true">
+    insert into examine_level (level_name)
+    values (#{levelName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="examine_id" keyProperty="examineId" parameterType="ExamineLevel" useGeneratedKeys="true">
+    insert into examine_level
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="levelName != null">
+        level_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="levelName != null">
+        #{levelName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ExamineLevel">
+    update examine_level
+    <set>
+      <if test="levelName != null">
+        level_name = #{levelName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where examine_id = #{examineId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ExamineLevel">
+    update examine_level
+    set level_name = #{levelName,jdbcType=VARCHAR}
+    where examine_id = #{examineId,jdbcType=BIGINT}
+  </update>
+</mapper>

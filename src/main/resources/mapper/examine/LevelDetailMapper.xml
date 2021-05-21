@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hui.mapper.examine.LevelDetailMapper">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="LevelDetail">
+        select level_id,
+               cadre_id,
+               examine_id,
+               unit_id,
+               school_leader,
+               this_unit,
+               service_object,
+               study_achievement
+        from level_detail
+        where level_id = #{levelId,jdbcType=BIGINT}
+    </select>
+  <select id="selectByCadreId" resultType="LevelDetail">
+    select level_id,
+           cadre_id,
+           examine_id,
+           unit_id,
+           school_leader,
+           this_unit,
+           service_object,
+           study_achievement
+    from level_detail
+    where cadre_id = #{cadreId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from level_detail
+        where level_id = #{levelId,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="level_id" keyProperty="levelId" parameterType="LevelDetail"
+            useGeneratedKeys="true">
+        insert into level_detail (cadre_id, examine_id, unit_id,
+                                  school_leader, this_unit, service_object,
+                                  study_achievement)
+        values (#{cadreId,jdbcType=BIGINT}, #{examineId,jdbcType=BIGINT}, #{unitId,jdbcType=BIGINT},
+                #{schoolLeader,jdbcType=DOUBLE}, #{thisUnit,jdbcType=DOUBLE}, #{serviceObject,jdbcType=DOUBLE},
+                #{studyAchievement,jdbcType=DOUBLE})
+    </insert>
+    <insert id="insertSelective" keyColumn="level_id" keyProperty="levelId" parameterType="LevelDetail"
+            useGeneratedKeys="true">
+        insert into level_detail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cadreId != null">
+                cadre_id,
+            </if>
+            <if test="examineId != null">
+                examine_id,
+            </if>
+            <if test="unitId != null">
+                unit_id,
+            </if>
+            <if test="schoolLeader != null">
+                school_leader,
+            </if>
+            <if test="thisUnit != null">
+                this_unit,
+            </if>
+            <if test="serviceObject != null">
+                service_object,
+            </if>
+            <if test="studyAchievement != null">
+                study_achievement,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cadreId != null">
+                #{cadreId,jdbcType=BIGINT},
+            </if>
+            <if test="examineId != null">
+                #{examineId,jdbcType=BIGINT},
+            </if>
+            <if test="unitId != null">
+                #{unitId,jdbcType=BIGINT},
+            </if>
+            <if test="schoolLeader != null">
+                #{schoolLeader,jdbcType=DOUBLE},
+            </if>
+            <if test="thisUnit != null">
+                #{thisUnit,jdbcType=DOUBLE},
+            </if>
+            <if test="serviceObject != null">
+                #{serviceObject,jdbcType=DOUBLE},
+            </if>
+            <if test="studyAchievement != null">
+                #{studyAchievement,jdbcType=DOUBLE},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="LevelDetail">
+        update level_detail
+        <set>
+            <if test="cadreId != null">
+                cadre_id = #{cadreId,jdbcType=BIGINT},
+            </if>
+            <if test="examineId != null">
+                examine_id = #{examineId,jdbcType=BIGINT},
+            </if>
+            <if test="unitId != null">
+                unit_id = #{unitId,jdbcType=BIGINT},
+            </if>
+            <if test="schoolLeader != null">
+                school_leader = #{schoolLeader,jdbcType=DOUBLE},
+            </if>
+            <if test="thisUnit != null">
+                this_unit = #{thisUnit,jdbcType=DOUBLE},
+            </if>
+            <if test="serviceObject != null">
+                service_object = #{serviceObject,jdbcType=DOUBLE},
+            </if>
+            <if test="studyAchievement != null">
+                study_achievement = #{studyAchievement,jdbcType=DOUBLE},
+            </if>
+        </set>
+        where level_id = #{levelId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="LevelDetail">
+        update level_detail
+        set cadre_id          = #{cadreId,jdbcType=BIGINT},
+            examine_id        = #{examineId,jdbcType=BIGINT},
+            unit_id           = #{unitId,jdbcType=BIGINT},
+            school_leader     = #{schoolLeader,jdbcType=DOUBLE},
+            this_unit         = #{thisUnit,jdbcType=DOUBLE},
+            service_object    = #{serviceObject,jdbcType=DOUBLE},
+            study_achievement = #{studyAchievement,jdbcType=DOUBLE}
+        where level_id = #{levelId,jdbcType=BIGINT}
+    </update>
+</mapper>
