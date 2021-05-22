@@ -47,4 +47,11 @@ public class CadreController {
                 3);
         return Message.success().add("pageInfo", pageInfo);
     }
+
+
+    /**
+     * 干部信息维护 增删改查
+     */
+
+    
 }

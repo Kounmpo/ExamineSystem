@@ -7,9 +7,10 @@
         where group_id = #{groupId,jdbcType=BIGINT}
     </select>
     <select id="selectByUnitId" resultType="GroupExamine">
-        select examine_name,
-               weight,
-               points
+        select unit_id unitId,
+               examine_name examineName,
+               weight weight,
+               points points
         from group_examine
         where unit_id = #{unitId, jdbcType=BIGINT}
     </select>

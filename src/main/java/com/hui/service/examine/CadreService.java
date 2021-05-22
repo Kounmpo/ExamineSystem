@@ -20,4 +20,5 @@ public interface CadreService {
      * @return List<Cadre>
      */
     List<Cadre> selectForIndex(Cadre cadre);
+
 }

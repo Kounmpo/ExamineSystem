@@ -40,4 +40,11 @@ public class FirstObsPointController {
     public Message getAllCadreFirstPoint(@RequestParam("cadreId") Long cadreId) {
         return Message.success().add("all",service.selectAllCadre(cadreId));
     }
+
+    @RequestMapping(value = "/cadre-points")
+    @ResponseBody
+    public Message getCadreDailyPoints(@RequestParam("cadreId") Long cadreId) {
+        return Message.success().add("points",
+                service.getCadreDailyPoints(cadreId));
+    }
 }

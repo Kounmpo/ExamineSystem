@@ -42,12 +42,12 @@ public class SecondaryObsPoint implements Serializable {
      * 考核的原始分数
      */
     @Transient
-    private Double points1;
+    private double points1;
 
     /**
      * 原始分数 * 权重 之后的分数
      */
     @Transient
-    private Double points2;
+    private double points2;
 
 }
