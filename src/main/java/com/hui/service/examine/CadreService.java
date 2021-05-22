@@ -21,4 +21,23 @@ public interface CadreService {
      */
     List<Cadre> selectForIndex(Cadre cadre);
 
+    /**
+     * 选择性的更新
+     * @param cadre the cadre
+     * @return int
+     */
+    int updateBySelective(Cadre cadre);
+
+    /**
+     * 批量删除与单个删除
+     * @param cadres the cadres
+     */
+    void batchDelete(List<Cadre> cadres);
+
+    /**
+     * 增加干部
+     * @param cadre  the cadre
+     * @return int
+     */
+    int insert(Cadre cadre);
 }

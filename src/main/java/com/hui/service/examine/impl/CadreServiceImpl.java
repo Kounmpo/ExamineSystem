@@ -1,7 +1,9 @@
 package com.hui.service.examine.impl;
 
 import com.hui.entity.examine.Cadre;
+import com.hui.entity.examine.DailyExamine;
 import com.hui.mapper.examine.CadreMapper;
+import com.hui.mapper.examine.DailyExamineMapper;
 import com.hui.service.examine.CadreService;
 import com.hui.service.examine.LevelDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class CadreServiceImpl implements CadreService {
 
     @Autowired
     LevelDetailService service;
+
+    @Autowired
+    DailyExamineMapper mapper;
 
     private final CadreMapper cadreMapper;
 
@@ -38,5 +43,24 @@ public class CadreServiceImpl implements CadreService {
             c.setPoints(service.getLevelPoints(cadre.getCadreId()));
         }
         return cadreList;
+    }
+
+    @Override
+    public int updateBySelective(Cadre cadre) {
+        return cadreMapper.updateByPrimaryKeySelective(cadre);
+    }
+
+    @Override
+    public void batchDelete(List<Cadre> cadres) {
+        for (Cadre c:
+             cadres) {
+            cadreMapper.deleteByPrimaryKey(c.getCadreId());
+            mapper.deleteByCadreId(c.getCadreId());
+        }
+    }
+
+    @Override
+    public int insert(Cadre cadre) {
+        return cadreMapper.insertSelective(cadre);
     }
 }

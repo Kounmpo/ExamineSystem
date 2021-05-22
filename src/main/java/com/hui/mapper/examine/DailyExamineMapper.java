@@ -34,4 +34,8 @@ public interface DailyExamineMapper {
     int updateByPrimaryKeySelective(DailyExamine record);
 
     int updateByPrimaryKey(DailyExamine record);
+
+    int deleteByCadreId(@Param("cadreId") long cadreId);
+
+    int deleteByUnitId(@Param("unitId") long unitId);
 }
