@@ -19,6 +19,11 @@
         from group_examine
         where group_id = #{groupId,jdbcType=BIGINT}
     </delete>
+    <delete id="deleteByUnitId">
+        delete
+        from group_examine
+        where unit_id = #{unitId,jdbcType=BIGINT}
+    </delete>
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="GroupExamine" useGeneratedKeys="true">
         insert into group_examine (examine_name, unit_id, weight,
                                    points)

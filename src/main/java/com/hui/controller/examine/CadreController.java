@@ -72,9 +72,14 @@ public class CadreController {
        if (cadre.getEmail().matches(pattern1)) {
            errorList.add("邮箱格式不正确！");
        }
+       if (errorList.isEmpty()) {
+           cadreService.updateBySelective(cadre);
+           return Message.success();
+       } else {
+           return Message.fail().add("errorList",errorList);
+       }
 
-        cadreService.updateBySelective(cadre);
-        return Message.success().add("errorMessage", errorList);
+
     }
 
     /**
@@ -103,13 +108,15 @@ public class CadreController {
         if (cadre.getEmail().matches(pattern1)) {
             errorList.add("邮箱格式不正确！");
         }
-        if (cadre.getUnitId() == null) {
-            errorList.add("部门Id不能为空!");
-        }
         if (cadre.getCadreCode().isEmpty()) {
             errorList.add("干部编码不能为空!");
         }
-        cadreService.insert(cadre);
-        return Message.success().add("errorMessage", errorList);
+        if (errorList.isEmpty()) {
+            cadreService.insert(cadre);
+            return Message.success();
+        } else {
+            return Message.fail().add("errorList",errorList);
+        }
+
     }
 }

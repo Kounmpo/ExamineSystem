@@ -31,4 +31,6 @@ public interface LevelDetailMapper {
     int updateByPrimaryKeySelective(LevelDetail record);
 
     int updateByPrimaryKey(LevelDetail record);
+
+    int deleteByCadreId(@Param("cadreId") long cadreId);
 }

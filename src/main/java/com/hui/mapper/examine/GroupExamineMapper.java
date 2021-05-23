@@ -35,4 +35,6 @@ public interface GroupExamineMapper {
     int updateByPrimaryKeySelective(Unit record);
 
     int updateByPrimaryKey(Unit record);
+
+    int deleteByUnitId(@Param("unitId") long unitId);
 }

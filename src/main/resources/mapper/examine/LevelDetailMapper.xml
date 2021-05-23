@@ -30,6 +30,11 @@
         from level_detail
         where level_id = #{levelId,jdbcType=BIGINT}
     </delete>
+    <delete id="deleteByCadreId">
+        delete
+        from level_detail
+        where cadre_id = #{cadreId,jdbcType=BIGINT}
+    </delete>
     <insert id="insert" keyColumn="level_id" keyProperty="levelId" parameterType="LevelDetail"
             useGeneratedKeys="true">
         insert into level_detail (cadre_id, examine_id, unit_id,
