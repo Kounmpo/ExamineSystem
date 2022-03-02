@@ -3,6 +3,7 @@ package com.hui.entity.examine;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import javax.persistence.Transient;
 import java.io.Serializable;
 
 /** 领导班子和领导干部的日常考核对应的实体类
@@ -30,4 +31,10 @@ public class DailyExamine implements Serializable, Comparable<DailyExamine> {
     public int compareTo(DailyExamine o) {
         return 0;
     }
+
+    @Transient
+    private String secondaryName;
+
+    @Transient
+    private double weight;
 }

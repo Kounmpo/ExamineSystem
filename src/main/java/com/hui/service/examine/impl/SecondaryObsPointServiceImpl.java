@@ -36,6 +36,16 @@ public class SecondaryObsPointServiceImpl implements SecondaryObsPointService {
         return getObsPointList(obsPoints, dailyExamines);
     }
 
+    @Override
+    public int updateByPrimaryId(SecondaryObsPoint record) {
+        return mapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public List<SecondaryObsPoint> selectByGroupExamine(int groupExamine) {
+        return mapper.selectByGroupExamine(groupExamine);
+    }
+
     public List<SecondaryObsPoint> getObsPointList(List<SecondaryObsPoint> obsPoints, List<DailyExamine> dailyExamines) {
         for (DailyExamine d:
                 dailyExamines) {

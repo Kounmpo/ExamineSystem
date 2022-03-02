@@ -7,7 +7,8 @@
         where group_id = #{groupId,jdbcType=BIGINT}
     </select>
     <select id="selectByUnitId" resultType="GroupExamine">
-        select unit_id unitId,
+        select group_id groupId,
+               unit_id unitId,
                examine_name examineName,
                weight weight,
                points points
@@ -78,7 +79,7 @@
                 points = #{points,jdbcType=DOUBLE},
             </if>
         </set>
-        where id = #{id,jdbcType=BIGINT}
+        where group_id = #{groupId,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="GroupExamine">
         update group_examine

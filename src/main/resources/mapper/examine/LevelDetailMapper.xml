@@ -14,15 +14,17 @@
         where level_id = #{levelId,jdbcType=BIGINT}
     </select>
   <select id="selectByCadreId" resultType="LevelDetail">
-    select level_id,
-           cadre_id,
-           examine_id,
-           unit_id,
-           school_leader,
-           this_unit,
-           service_object,
-           study_achievement
-    from level_detail
+    select l.level_id levelId,
+           l.cadre_id cadreId,
+           l.examine_id examineId,
+           l.unit_id unitId,
+           l.school_leader schoolLeader,
+           l.this_unit thisUnit,
+           l.service_object serviceObject,
+           l.study_achievement studyAchievement,
+           e.level_name levelName
+    from level_detail l join examine_level e
+    on e.examine_id = l.examine_id
     where cadre_id = #{cadreId,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">

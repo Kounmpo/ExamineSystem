@@ -1,5 +1,6 @@
 package com.hui.mapper.examine;
 
+import com.hui.entity.examine.DailyExamine;
 import com.hui.entity.examine.GroupExamine;
 import com.hui.entity.examine.Unit;
 import org.apache.ibatis.annotations.Param;
@@ -14,9 +15,11 @@ import java.util.List;
 public interface GroupExamineMapper {
     int deleteByPrimaryKey(@Param("groupId") Long groupId);
 
+    int deleteByUnitId(@Param("unitId") Long unitId);
+
     int insert(Unit record);
 
-    int insertSelective(Unit record);
+    int insertSelective(GroupExamine record);
 
     /**
      * 通过主键查询一条记录
@@ -32,9 +35,9 @@ public interface GroupExamineMapper {
      */
     List<GroupExamine> selectByUnitId(@Param("unitId") Long unitId);
 
-    int updateByPrimaryKeySelective(Unit record);
+    int updateByPrimaryKeySelective(GroupExamine record);
 
-    int updateByPrimaryKey(Unit record);
+    int updateByPrimaryKey(GroupExamine record);
 
     int deleteByUnitId(@Param("unitId") long unitId);
 }

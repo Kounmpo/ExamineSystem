@@ -16,6 +16,12 @@
         from secondary_obs_point
         where first_id = #{firstId, jdbcType=BIGINT}
     </select>
+    <select id="selectByGroupExamine" resultType="SecondaryObsPoint">
+        select secondary_id,
+               name
+        from secondary_obs_point s
+        where group_examine = #{groupExamine, jdbcType=TINYINT}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete
         from secondary_obs_point

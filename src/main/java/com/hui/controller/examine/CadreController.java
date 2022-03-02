@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * @author huang jiehui
- * @date 2021/5/17 0:33
+ * @date 2021/5/10 0:33
  */
 @Controller
 public class CadreController {
@@ -61,7 +61,7 @@ public class CadreController {
      */
     @PostMapping(value = "/update-cadre")
     @ResponseBody
-    public Message updateSelective(Cadre cadre) {
+    public Message updateSelective(@RequestBody Cadre cadre) {
         List<String> errorList = new ArrayList<>();
         if (cadre.getName().length() > 20 && cadre.getName().length() < 2) {
             errorList.add("姓名长度不得超过20个字符，不得低于2个字符");
@@ -78,8 +78,6 @@ public class CadreController {
        } else {
            return Message.fail().add("errorList",errorList);
        }
-
-
     }
 
     /**

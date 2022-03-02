@@ -24,4 +24,11 @@ public interface SecondaryObsPointMapper {
     int updateByPrimaryKeySelective(SecondaryObsPoint record);
 
     int updateByPrimaryKey(SecondaryObsPoint record);
+
+    /**
+     * 通过是否领导班子考核查询
+     * @param groupExamine groupExamine
+     * @return List<SecondaryObsPoint>
+     */
+    List<SecondaryObsPoint> selectByGroupExamine(@Param("groupExamine") int groupExamine);
 }

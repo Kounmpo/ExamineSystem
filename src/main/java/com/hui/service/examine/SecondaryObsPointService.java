@@ -20,4 +20,18 @@ public interface SecondaryObsPointService {
      * @return List<SecondaryObsPoint>
      */
     List<SecondaryObsPoint> selectAllCadre(Long cadreId);
+
+    /**
+     * 通过主键更新
+     * @param record the record
+     * @return int
+     */
+    int updateByPrimaryId(SecondaryObsPoint record);
+
+    /**
+     * 查询二级考核点的名称
+     * @param groupExamine
+     * @return List<SecondaryObsPoint>
+     */
+    List<SecondaryObsPoint> selectByGroupExamine(int groupExamine);
 }

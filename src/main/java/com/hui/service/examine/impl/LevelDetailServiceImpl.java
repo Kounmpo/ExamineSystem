@@ -9,7 +9,6 @@ import com.hui.service.examine.FirstObsPointService;
 import com.hui.service.examine.LevelDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import javax.security.auth.login.Configuration;
 import java.util.List;
 
 /**
@@ -69,5 +68,28 @@ public class LevelDetailServiceImpl implements LevelDetailService {
             points += Math.round(( point * 100 ) / 100.0 );
         }
         return points;
+    }
+
+    @Override
+    public int deleteByCadreId(long cadreId) {
+        return mapper.deleteByCadreId(cadreId);
+    }
+
+    @Override
+    public List<LevelDetail> selectByCadreId(long cadreId) {
+        return mapper.selectByCadreId(cadreId);
+    }
+
+    @Override
+    public int updateByPrimaryId(LevelDetail record) {
+        return mapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public void batchInsert(List<LevelDetail> levelDetails) {
+        for (LevelDetail l:
+             levelDetails) {
+            mapper.insertSelective(l);
+        }
     }
 }

@@ -21,4 +21,24 @@ public interface GroupExamineService {
      * @return Double
      */
     Double selectPointsByUnitId(Long unitId);
+
+    /**
+     * 通过主键更新年度考核结果
+     * @param record the record
+     * @return int
+     */
+    int updateByPrimaryKey(GroupExamine record);
+
+    /**
+     * 通过主键删除年度考核结果
+     * @param unitId the unitId
+     * @return int
+     */
+    int deleteByUnitId(Long unitId);
+
+    /**
+     * 新增领导班子年度额考核
+     * @param groupExamineList
+     */
+    void insert(List<GroupExamine> groupExamineList);
 }

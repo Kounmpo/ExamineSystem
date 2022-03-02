@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
@@ -44,7 +43,7 @@ public class UnitController {
         return Message.success().add("pageInfo",pageInfo);
     }
 
-    @PostMapping(value = "edit-unit")
+    @PostMapping(value = "/edit-unit")
     @ResponseBody
     public Message editUnit(@RequestBody Unit unit) {
         errorList.clear();
@@ -63,14 +62,14 @@ public class UnitController {
 
     }
 
-    @PostMapping(value = "delete-unit")
+    @PostMapping(value = "/delete-unit")
     @ResponseBody
     public Message deleteUnit(@RequestBody List<Unit> units) {
         unitService.batchDelete(units);
         return Message.success();
     }
 
-    @GetMapping(value = "insert-unit")
+    @GetMapping(value = "/insert-unit")
     @ResponseBody
     public Message insertUnit(@RequestBody Unit unit) {
         int flag = unitService.insertUnit(unit);

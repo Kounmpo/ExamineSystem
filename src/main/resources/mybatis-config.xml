@@ -19,6 +19,8 @@
         <typeAlias type="com.hui.entity.examine.SecondaryObsPoint" alias="SecondaryObsPoint"/>
         <typeAlias type="com.hui.entity.examine.LevelDetail" alias="LevelDetail"/>
         <typeAlias type="com.hui.entity.examine.ExamineLevel" alias="ExamineLevel"/>
+        <typeAlias type="com.hui.entity.examine.SystemRole" alias="SystemRole"/>
+        <typeAlias type="com.hui.entity.examine.SystemUser" alias="SystemUser"/>
     </typeAliases>
 
     <plugins>

@@ -48,4 +48,22 @@ public class GroupExamineServiceImpl implements GroupExamineService {
         }
         return pointsSum;
     }
+
+    @Override
+    public int updateByPrimaryKey(GroupExamine record) {
+        return examineMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public int deleteByUnitId(Long unitId) {
+        return examineMapper.deleteByUnitId(unitId);
+    }
+
+    @Override
+    public void insert(List<GroupExamine> groupExamineList) {
+        for (GroupExamine g:
+             groupExamineList) {
+            examineMapper.insertSelective(g);
+        }
+    }
 }
